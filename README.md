@@ -4,11 +4,7 @@ Auth Verify Proxy
 A sidecar container to enforce security policy.
 
 The current implementation is working with Auth0 https://auth0.com/docs/authorization tokens in the incoming
-request http headers:
-
-```
-
-```
+request http headers.
 
 The proxy should work with any compliant JWT based token but it is possible there are assumptions made
 specific to Auth0.
