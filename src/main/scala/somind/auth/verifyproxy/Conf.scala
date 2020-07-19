@@ -22,11 +22,17 @@ object Conf extends LazyLogging {
     val t = "120 seconds"
     Duration(t)
   }
+
   implicit def requestTimeout: Timeout = {
     val d = requestDuration
     FiniteDuration(d.length, d.unit)
   }
 
   val observer: ActorRef = system.actorOf(Props[Observer], "observer")
+
+  val jwksHost: String = conf.getString("main.jwksHost")
+  val remotePath: String = conf.getString("main.remotePath")
+  val remoteHost: String = conf.getString("main.remoteHost")
+  val remotePort: Int = conf.getInt("main.remotePort")
 
 }
