@@ -1,4 +1,5 @@
-package somind.dtlab.models
+package somind.auth.verifyproxy.models
+
 import java.time.ZonedDateTime
 
 object DtPath {

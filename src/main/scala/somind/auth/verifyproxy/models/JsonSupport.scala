@@ -1,4 +1,4 @@
-package somind.dtlab.models
+package somind.auth.verifyproxy.models
 
 import java.time.{ZoneOffset, ZonedDateTime}
 import java.util.{Date, UUID}

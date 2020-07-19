@@ -1,0 +1,38 @@
+http://localhost:8080
+#https://somind.tech
+#https://somind.org
+
+Content-Type: application/json; charset=utf-8
+
+--
+
+--
+GET /api/actor/machinery/one
+
+--
+GET /api/actor/badmachine/one/badmodule/2
+
+--
+GET /api/actor/machine/one/module/2/submodule/three
+
+--
+POST /api/actor/badmachine/one/badmodule/2/
+{
+  "idx": 0,
+  "value": 2.1,
+  "datetime": "2020-09-13T15:31:21.671Z"
+}
+
+--
+POST /api/actor/machinery/one
+{
+  "idx": 0,
+  "value": 5.5
+}
+
+--
+GET /fitness
+
+--
+GET /observe
+

@@ -1,4 +1,4 @@
-package somind.dtlab
+package somind.auth.verifyproxy
 
 import java.io.IOException
 

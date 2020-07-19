@@ -1,18 +1,17 @@
-package somind.dtlab
+package somind.auth.verifyproxy
 
 import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.util.Timeout
 import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.LazyLogging
-import somind.dtlab.actors._
-import somind.dtlab.observe.Observer
+import somind.auth.verifyproxy.observe.Observer
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration.{Duration, FiniteDuration}
 
 object Conf extends LazyLogging {
 
-  implicit val system: ActorSystem = ActorSystem("DtLab-system")
+  implicit val system: ActorSystem = ActorSystem("auth-verify-system")
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   val conf: Config = ConfigFactory.load()
@@ -29,10 +28,5 @@ object Conf extends LazyLogging {
   }
 
   val observer: ActorRef = system.actorOf(Props[Observer], "observer")
-
-  val dtDirectory: ActorRef = system.actorOf(Props[DtDirectory], "dtDirectory")
-
-  val persistIdRoot: String = conf.getString("main.persistIdRoot")
-  val snapshotInterval: Int = conf.getInt("main.snapshotInterval")
 
 }

@@ -1,7 +1,7 @@
-package somind.dtlab.observe
+package somind.auth.verifyproxy.observe
 
 import akka.pattern.ask
-import somind.dtlab.Conf._
+import somind.auth.verifyproxy.Conf._
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 
