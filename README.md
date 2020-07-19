@@ -25,7 +25,7 @@ When a request destined for a service is intercepted by the proxy, it does the f
 2. Parse the token.
 3. Verify the token was signed by us and is not expired.
 4. Extract the permissions from the claims.
-5. Calculate required permissions by looking at the http method and the root type in the DtLab object being operated on. 
+5. Calculate required permissions by looking at the http method and the root DtLab object being operated on.  ie: `read:type`, `write:actor`.  Future implementations will support `read:actor.my_fav_actor_types` where root type works like a multi-tenant namespace.
 6. Verify that the required permission is in the list of permissions extracted from the signed token.
 
 If the above have no issues, then forward the request to the configured `REMOTE_HOST` and `REMOTE_PORT`.
