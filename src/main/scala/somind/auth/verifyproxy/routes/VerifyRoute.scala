@@ -4,6 +4,7 @@ import java.security.interfaces.RSAPublicKey
 
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server._
+import akka.http.scaladsl.{Http, HttpExt}
 import com.auth0.jwk.UrlJwkProvider
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
@@ -12,6 +13,9 @@ import com.typesafe.scalalogging.LazyLogging
 import somind.auth.verifyproxy.Conf._
 import somind.auth.verifyproxy.models._
 import somind.auth.verifyproxy.{HttpSupport, observe}
+
+import scala.concurrent.Future
+import scala.util._
 
 object VerifyRoute
     extends JsonSupport
@@ -91,18 +95,23 @@ object VerifyRoute
 
   }
 
+  val http: HttpExt = Http(system)
+  def forward(request: HttpRequest): Future[HttpResponse] = {
+    http.singleRequest(request)
+  }
+
   def apply: Route = {
     headerValueByName("Authorization") { token =>
       ignoreTrailingSlash {
         path(Segments) { segs =>
-          extractRequest { r =>
-            verifyJwt(segs, token, r.method) {
-              // todo: forward to destination service
-              // todo: forward to destination service
-              // todo: forward to destination service
-              complete(
-                StatusCodes.OK,
-                "{\n  \"msg\": \"Your access token was successfully validated!\"\n}")
+          extractRequest { request =>
+            verifyJwt(segs, token, request.method) {
+              val newUri = request.uri.withHost(remoteHost).withPort(remotePort)
+              val newRequest = request.copy(uri = newUri)
+              onComplete(http.singleRequest(newRequest)) {
+                case Success(r) => complete(r)
+                case e          => complete(e)
+              }
             }
           }
         }
