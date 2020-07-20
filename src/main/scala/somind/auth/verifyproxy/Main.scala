@@ -15,9 +15,11 @@ object Main extends LazyLogging with JsonSupport with HttpSupport {
       ObserverRoute.apply ~
         handleErrors {
           cors(corsSettings) {
-            logRequest(urlpath) {
-              pathPrefix(urlpath) {
-                VerifyRoute.apply
+            handleErrors {
+              logRequest(urlpath) {
+                pathPrefix(urlpath) {
+                  VerifyRoute.apply
+                }
               }
             }
           }
