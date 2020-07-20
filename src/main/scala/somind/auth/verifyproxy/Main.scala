@@ -1,7 +1,6 @@
 package somind.auth.verifyproxy
 
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.headers.HttpOriginRange
 import akka.http.scaladsl.server.Directives._
 import ch.megard.akka.http.cors.scaladsl.CorsDirectives._
 import com.typesafe.scalalogging.LazyLogging
