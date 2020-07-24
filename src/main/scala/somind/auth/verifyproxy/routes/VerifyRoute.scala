@@ -8,6 +8,7 @@ import akka.http.scaladsl.{Http, HttpExt}
 import com.auth0.jwk.UrlJwkProvider
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import com.auth0.jwt.exceptions.TokenExpiredException
 import com.auth0.jwt.interfaces._
 import com.typesafe.scalalogging.LazyLogging
 import somind.auth.verifyproxy.Conf._
@@ -36,15 +37,24 @@ object VerifyRoute
         val algorithm =
           Algorithm.RSA256(jwk.getPublicKey.asInstanceOf[RSAPublicKey], null)
         val verifier = JWT.require(algorithm).build()
-        verifier.verify(token) match {
-          case null =>
-            observe.Observer("jwt_verify_failed")
-            logger.warn(
-              s"jwt not valid. audience: ${jwt.getAudience} subject: ${jwt.getSubject}")
+        try {
+          verifier.verify(token) match {
+            case null =>
+              observe.Observer("jwt_verify_failed")
+              logger.warn(
+                s"jwt not valid. audience: ${jwt.getAudience} subject: ${jwt.getSubject}")
+              None
+            case dj =>
+              observe.Observer("jwt_verify_succeeded")
+              Some(dj)
+          }
+        } catch {
+          case _: TokenExpiredException =>
+            observe.Observer("expired_token")
             None
-          case dj =>
-            observe.Observer("jwt_verify_succeeded")
-            Some(dj)
+          case e: Throwable =>
+            logger.warn(s"can not verify jwt: $e")
+            None
         }
       case a =>
         observe.Observer("jwt_verify_alg_not_supported")
