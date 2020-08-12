@@ -1,7 +1,7 @@
 Auth Verify Proxy
 ===========
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28b0aa92bec148f49bd77a9a5a8e38e2)](https://app.codacy.com/gh/SoMind/auth-verify-proxy?utm_source=github.com&utm_medium=referral&utm_content=SoMind/auth-verify-proxy&utm_campaign=Badge_Grade_Dashboard)
+![Scala CI](https://github.com/SoMind/auth-verify-proxy/workflows/Scala%20CI/badge.svg) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/28b0aa92bec148f49bd77a9a5a8e38e2)](https://app.codacy.com/gh/SoMind/auth-verify-proxy?utm_source=github.com&utm_medium=referral&utm_content=SoMind/auth-verify-proxy&utm_campaign=Badge_Grade_Dashboard)
 
 A sidecar container to enforce security policy.
 
