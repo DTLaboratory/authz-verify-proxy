@@ -17,8 +17,8 @@ parallelExecution in test := false
 crossScalaVersions := List("2.12.11")
 version := "1.0"
 
-val akkaVersion = "2.6.6"
 val akkaHttpVersion = "10.2.0"
+val akkaVersion = "2.6.8"
 val swaggerVersion = "2.0.8"
 
 inThisBuild(List(
@@ -37,9 +37,9 @@ inThisBuild(List(
 
 libraryDependencies ++=
   Seq(
-    "com.auth0" % "jwks-rsa" % "0.12.0",
+    "com.auth0" % "jwks-rsa" % "0.13.0",
     "com.auth0" % "java-jwt" % "3.10.3",
-    "ch.megard" %% "akka-http-cors" % "1.0.0",
+    "ch.megard" %% "akka-http-cors" % "1.1.0",
     "ch.qos.logback" % "logback-classic" % "1.2.3",
     "com.typesafe" % "config" % "1.4.0",
     "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
@@ -49,7 +49,7 @@ libraryDependencies ++=
     "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion,
     "org.json4s" %% "json4s-native" % "3.6.9",
     "com.github.nscala-time" %% "nscala-time" % "2.24.0",
-    "org.scalatest" %% "scalatest" % "3.2.0" % "test"
+    "org.scalatest" %% "scalatest" % "3.2.2" % "test"
   )
 
 assemblyJarName in assembly := s"${name.value}.jar"
