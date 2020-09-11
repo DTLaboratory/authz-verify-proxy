@@ -1,10 +1,10 @@
-package somind.auth.verifyproxy
+package somind.authz.verifyproxy
 
 import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.util.Timeout
 import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.LazyLogging
-import somind.auth.verifyproxy.observe.Observer
+import somind.authz.verifyproxy.observe.Observer
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration.{Duration, FiniteDuration}

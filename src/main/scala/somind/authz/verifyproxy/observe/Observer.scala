@@ -1,7 +1,7 @@
-package somind.auth.verifyproxy.observe
+package somind.authz.verifyproxy.observe
 
 import akka.pattern.ask
-import somind.auth.verifyproxy.Conf._
+import somind.authz.verifyproxy.Conf._
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 

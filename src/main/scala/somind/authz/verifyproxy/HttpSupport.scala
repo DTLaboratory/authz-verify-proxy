@@ -1,4 +1,4 @@
-package somind.auth.verifyproxy
+package somind.authz.verifyproxy
 
 import java.io.IOException
 

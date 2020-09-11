@@ -1,4 +1,4 @@
-package somind.auth.verifyproxy.observe
+package somind.authz.verifyproxy.observe
 
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity, StatusCodes}
 import akka.http.scaladsl.server.{Directives, Route}
@@ -7,7 +7,7 @@ import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.Future
 import scala.util.Success
-import somind.auth.verifyproxy.Conf._
+import somind.authz.verifyproxy.Conf._
 
 object ObserverRoute extends LazyLogging with Directives {
 
