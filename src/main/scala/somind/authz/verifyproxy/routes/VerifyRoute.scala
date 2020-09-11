@@ -1,4 +1,4 @@
-package somind.auth.verifyproxy.routes
+package somind.authz.verifyproxy.routes
 
 import java.security.interfaces.RSAPublicKey
 
@@ -11,9 +11,10 @@ import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.exceptions.TokenExpiredException
 import com.auth0.jwt.interfaces._
 import com.typesafe.scalalogging.LazyLogging
-import somind.auth.verifyproxy.Conf._
-import somind.auth.verifyproxy.models._
-import somind.auth.verifyproxy.{HttpSupport, observe}
+import somind.authz.verifyproxy.Conf._
+import somind.authz.verifyproxy.models.JsonSupport
+import somind.authz.verifyproxy.observe.Observer
+import somind.authz.verifyproxy.{HttpSupport, observe}
 
 import scala.concurrent.Future
 import scala.util._
@@ -40,7 +41,7 @@ object VerifyRoute
         try {
           verifier.verify(token) match {
             case null =>
-              observe.Observer("jwt_verify_failed")
+              Observer("jwt_verify_failed")
               logger.warn(
                 s"jwt not valid. audience: ${jwt.getAudience} subject: ${jwt.getSubject}")
               None
@@ -117,7 +118,7 @@ object VerifyRoute
           extractRequest { request =>
             verifyJwt(segs, token, request.method) {
               val newUri = request.uri.withHost(remoteHost).withPort(remotePort)
-              val newRequest = request.copy(uri = newUri)
+              val newRequest = request.withUri(uri = newUri)
               onComplete(http.singleRequest(newRequest)) {
                 case Success(r) => complete(r)
                 case e          => complete(e)

@@ -1,4 +1,4 @@
-package somind.auth
+package somind.authz
 
 import java.security.interfaces.RSAPublicKey
 
@@ -9,7 +9,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException
 import com.typesafe.scalalogging.LazyLogging
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import somind.auth.verifyproxy.Conf._
+import somind.authz.verifyproxy.Conf._
 
 class JwtSpec extends AnyFlatSpec with should.Matchers with LazyLogging {
 
