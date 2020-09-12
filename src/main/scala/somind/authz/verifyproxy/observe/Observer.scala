@@ -75,7 +75,7 @@ class Observer extends Actor with LazyLogging {
     case _: FitnessQuery =>
       val agingState = state
         .filter(i => {
-          val name = i._1
+          val (name, _) = i
           name.contains("fitness")
         })
         .values
