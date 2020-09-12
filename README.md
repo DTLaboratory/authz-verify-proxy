@@ -1,6 +1,8 @@
 Authz Verify Proxy
 ===========
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28b0aa92bec148f49bd77a9a5a8e38e2)](https://app.codacy.com/gh/SoMind/authz-verify-proxy?utm_source=github.com&utm_medium=referral&utm_content=SoMind/authz-verify-proxy&utm_campaign=Badge_Grade_Dashboard)
+
 A sidecar container to enforce security policy.
 
 The current implementation is working with Auth0 <https://auth0.com/docs/authorization> tokens in the incoming
