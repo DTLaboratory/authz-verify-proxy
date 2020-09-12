@@ -1,6 +1,6 @@
 package somind.authz.verifyproxy.routes
 
-import java.security.interfaces.RSAPublicKey
+import java.security.interfaces._
 
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server._
@@ -36,18 +36,18 @@ object VerifyRoute
     jwk.getAlgorithm match {
       case "RS256" =>
         val algorithm =
-          Algorithm.RSA256(jwk.getPublicKey.asInstanceOf[RSAPublicKey], null)
+          Algorithm.RSA256(jwk.getPublicKey.asInstanceOf[RSAPublicKey], None.orNull)
         val verifier = JWT.require(algorithm).build()
         try {
           verifier.verify(token) match {
-            case null =>
+            case dj: DecodedJWT =>
+              observe.Observer("jwt_verify_succeeded")
+              Some(dj)
+            case _ =>
               Observer("jwt_verify_failed")
               logger.warn(
                 s"jwt not valid. audience: ${jwt.getAudience} subject: ${jwt.getSubject}")
               None
-            case dj =>
-              observe.Observer("jwt_verify_succeeded")
-              Some(dj)
           }
         } catch {
           case _: TokenExpiredException =>
