@@ -1,12 +1,12 @@
 package somind.authz.verifyproxy.observe
 
-import akka.pattern.ask
-import somind.authz.verifyproxy.Conf._
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 
 import akka.actor.{Actor, Props}
+import akka.pattern.ask
 import com.typesafe.scalalogging.LazyLogging
+import somind.authz.verifyproxy.Conf._
 
 case class MeasurementsQuery()
 case class FitnessQuery()
@@ -74,7 +74,10 @@ class Observer extends Actor with LazyLogging {
 
     case _: FitnessQuery =>
       val agingState = state
-        .filter(_._1.contains("fitness"))
+        .filter(i => {
+          val (name, _) = i
+          name.contains("fitness")
+        })
         .values
         .filter(m =>
           seconds(ZonedDateTime.now, m.datetime) > healthToleranceSeconds)

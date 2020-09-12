@@ -53,7 +53,7 @@ object VerifyRoute
           case _: TokenExpiredException =>
             observe.Observer("expired_token")
             None
-          case e: Throwable =>
+          case e =>
             logger.warn(s"can not verify jwt: $e")
             None
         }
