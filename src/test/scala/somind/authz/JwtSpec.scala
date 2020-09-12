@@ -37,7 +37,7 @@ class JwtSpec extends AnyFlatSpec with should.Matchers with LazyLogging {
     } catch {
       case _: TokenExpiredException =>
         logger.debug("good, token is expired")
-      case e: Throwable =>
+      case e =>
         assert(false, s"wrong exception: $e")
     }
 
