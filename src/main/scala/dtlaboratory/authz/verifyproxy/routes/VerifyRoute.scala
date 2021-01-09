@@ -7,7 +7,7 @@ import akka.http.scaladsl.{Http, HttpExt}
 import com.auth0.jwk.UrlJwkProvider
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.auth0.jwt.exceptions.TokenExpiredException
+import com.auth0.jwt.exceptions.{JWTVerificationException, TokenExpiredException}
 import com.auth0.jwt.interfaces._
 import com.typesafe.scalalogging.LazyLogging
 import dtlaboratory.authz.verifyproxy.models.JsonSupport
@@ -52,7 +52,7 @@ object VerifyRoute
           case _: TokenExpiredException =>
             observe.Observer("expired_token")
             None
-          case e: Throwable =>
+          case e: JWTVerificationException =>
             logger.warn(s"can not verify jwt: $e")
             None
         }

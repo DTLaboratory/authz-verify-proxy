@@ -32,13 +32,12 @@ class JwtSpec extends AnyFlatSpec with should.Matchers with LazyLogging {
 
     try {
 
-    verifier.verify(token)
-      assert(false, "no exception")
+      verifier.verify(token)
+      val falseParam = false
+      assert(falseParam, "no exception")
     } catch {
       case _: TokenExpiredException =>
         logger.debug("good, token is expired")
-      case e: Exception =>
-        assert(false, s"wrong exception: $e")
     }
 
   }
