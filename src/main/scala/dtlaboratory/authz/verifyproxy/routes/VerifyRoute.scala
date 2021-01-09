@@ -1,7 +1,6 @@
-package somind.authz.verifyproxy.routes
+package dtlaboratory.authz.verifyproxy.routes
 
 import java.security.interfaces._
-
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server._
 import akka.http.scaladsl.{Http, HttpExt}
@@ -11,10 +10,10 @@ import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.exceptions.TokenExpiredException
 import com.auth0.jwt.interfaces._
 import com.typesafe.scalalogging.LazyLogging
-import somind.authz.verifyproxy.Conf._
-import somind.authz.verifyproxy.models.JsonSupport
-import somind.authz.verifyproxy.observe.Observer
-import somind.authz.verifyproxy.{HttpSupport, observe}
+import dtlaboratory.authz.verifyproxy.models.JsonSupport
+import dtlaboratory.authz.verifyproxy.observe.Observer
+import dtlaboratory.authz.verifyproxy.Conf._
+import dtlaboratory.authz.verifyproxy.{HttpSupport, observe}
 
 import scala.concurrent.Future
 import scala.util._
@@ -53,7 +52,7 @@ object VerifyRoute
           case _: TokenExpiredException =>
             observe.Observer("expired_token")
             None
-          case e =>
+          case e: Throwable =>
             logger.warn(s"can not verify jwt: $e")
             None
         }

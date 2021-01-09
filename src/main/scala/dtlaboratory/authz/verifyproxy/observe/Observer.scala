@@ -1,4 +1,4 @@
-package somind.authz.verifyproxy.observe
+package dtlaboratory.authz.verifyproxy.observe
 
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit
 import akka.actor.{Actor, Props}
 import akka.pattern.ask
 import com.typesafe.scalalogging.LazyLogging
-import somind.authz.verifyproxy.Conf._
+import dtlaboratory.authz.verifyproxy.Conf._
 
 case class MeasurementsQuery()
 case class FitnessQuery()
