@@ -1,13 +1,13 @@
-package somind.authz.verifyproxy
+package dtlaboratory.authz.verifyproxy
 
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
 import ch.megard.akka.http.cors.scaladsl.CorsDirectives._
 import com.typesafe.scalalogging.LazyLogging
 import Conf._
-import somind.authz.verifyproxy.models.JsonSupport
-import somind.authz.verifyproxy.observe.ObserverRoute
-import somind.authz.verifyproxy.routes.VerifyRoute
+import dtlaboratory.authz.verifyproxy.models.JsonSupport
+import dtlaboratory.authz.verifyproxy.observe.ObserverRoute
+import dtlaboratory.authz.verifyproxy.routes.VerifyRoute
 
 object Main extends LazyLogging with JsonSupport with HttpSupport {
   def main(args: Array[String]) {

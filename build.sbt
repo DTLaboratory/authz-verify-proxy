@@ -1,5 +1,5 @@
 name := "AuthzVerifyProxy"
-organization := "tech.somind"
+organization := "dtlaboratory.com"
 javacOptions ++= Seq("-source", "1.11", "-target", "1.11") 
 scalacOptions ++= Seq(
   "-target:jvm-1.8"
@@ -22,9 +22,9 @@ val akkaVersion = "2.6.10"
 val swaggerVersion = "2.0.8"
 
 inThisBuild(List(
-  organization := "tech.somind",
-  homepage := Some(url("https://github.com/somind/authz-verify-proxy")),
-  licenses := List("MIT" -> url("https://github.com/somind/authz-verify-proxy/blob/master/LICENSE")),
+  organization := "dtlaboratory.com",
+  homepage := Some(url("https://github.com/dtlaboratory/authz-verify-proxy")),
+  licenses := List("MIT" -> url("https://github.com/dtlaboratory/authz-verify-proxy/blob/master/LICENSE")),
   developers := List(
     Developer(
       "navicore",

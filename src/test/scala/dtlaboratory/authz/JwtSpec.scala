@@ -1,4 +1,4 @@
-package somind.authz
+package dtlaboratory.authz
 
 import java.security.interfaces.RSAPublicKey
 
@@ -9,7 +9,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException
 import com.typesafe.scalalogging.LazyLogging
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import somind.authz.verifyproxy.Conf._
+import dtlaboratory.authz.verifyproxy.Conf._
 
 class JwtSpec extends AnyFlatSpec with should.Matchers with LazyLogging {
 
@@ -32,13 +32,12 @@ class JwtSpec extends AnyFlatSpec with should.Matchers with LazyLogging {
 
     try {
 
-    verifier.verify(token)
-      assert(false, "no exception")
+      verifier.verify(token)
+      val falseParam = false
+      assert(falseParam, "no exception")
     } catch {
       case _: TokenExpiredException =>
         logger.debug("good, token is expired")
-      case e =>
-        assert(false, s"wrong exception: $e")
     }
 
   }

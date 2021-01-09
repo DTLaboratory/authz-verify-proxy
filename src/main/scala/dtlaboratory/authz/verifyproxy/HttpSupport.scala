@@ -1,4 +1,4 @@
-package somind.authz.verifyproxy
+package dtlaboratory.authz.verifyproxy
 
 import java.io.IOException
 
