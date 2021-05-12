@@ -32,3 +32,4 @@ When a request destined for a service is intercepted by the proxy, it does the f
 6.  Verify that the required permission is in the list of permissions extracted from the signed token.
 
 If the above have no issues, then forward the request to the configured `REMOTE_HOST` and `REMOTE_PORT`.
+
