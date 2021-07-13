@@ -1,3 +1,5 @@
+.scalafmt.conf
+project/metals.sbt
 .bsp/
 ENV*sh
 examples/
