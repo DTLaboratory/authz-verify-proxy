@@ -39,7 +39,7 @@ libraryDependencies ++=
   Seq(
     "com.auth0" % "java-jwt" % "3.18.3",
     "com.auth0" % "jwks-rsa" % "0.20.1",
-    "ch.megard" %% "akka-http-cors" % "1.1.2",
+    "ch.megard" %% "akka-http-cors" % "1.1.3",
     "ch.qos.logback" % "logback-classic" % "1.2.10",
     "com.typesafe" % "config" % "1.4.1",
     "com.typesafe.scala-logging" %% "scala-logging" % "3.9.4",
