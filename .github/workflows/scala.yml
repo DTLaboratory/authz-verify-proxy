@@ -14,13 +14,12 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up JDK 18
       uses: actions/setup-java@v3
+    - uses: actions/checkout@v3
       with:
         java-version: 18
         distribution: zulu
@@ -29,8 +28,9 @@ jobs:
     - name: Run tests and Build superjar
       run: sbt assembly
     - name: Build Docker Image
-      uses: docker/build-push-action@v1
+      uses: docker/build-push-action@v3
       with:
+        context: .
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: dtlaboratory/authz-verify-proxy
