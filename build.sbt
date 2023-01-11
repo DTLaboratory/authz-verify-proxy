@@ -38,7 +38,7 @@ inThisBuild(List(
 libraryDependencies ++=
   Seq(
     "com.auth0" % "java-jwt" % "4.2.2",
-    "com.auth0" % "jwks-rsa" % "0.21.2",
+    "com.auth0" % "jwks-rsa" % "0.21.3",
     "ch.megard" %% "akka-http-cors" % "1.1.3",
     "ch.qos.logback" % "logback-classic" % "1.4.5",
     "com.typesafe" % "config" % "1.4.2",
