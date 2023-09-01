@@ -40,7 +40,7 @@ libraryDependencies ++=
     "com.auth0" % "java-jwt" % "4.3.0",
     "com.auth0" % "jwks-rsa" % "0.22.0",
     "ch.megard" %% "akka-http-cors" % "1.2.0",
-    "ch.qos.logback" % "logback-classic" % "1.4.7",
+    "ch.qos.logback" % "logback-classic" % "1.4.11",
     "com.typesafe" % "config" % "1.4.2",
     "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
